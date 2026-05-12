@@ -4,6 +4,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
+        sh "echo Sleep-Time - ${params.SLEEP_TIME}, Port - ${params.APP_PORT}, Branch - ${params.BRANCH_NAME}"
         sh 'mvn clean package -DskipTests=true'
         archiveArtifacts 'target/hello-demo-*.jar'
       }
@@ -32,13 +33,12 @@ pipeline {
     
     stage('Integration Testing') {
       steps {
-        sh "sleep 10s"
+        sh "sleep ${params.SLEEP_TIME}"
         sh 'echo Testing using cURL commands......'
       }
     }
   }
   tools {
-    maven 'M398'
-  }
-
+        maven 'M3915'
+    }
 }
