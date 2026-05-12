@@ -1,6 +1,10 @@
-
 pipeline {
   agent any
+
+  tools {
+        maven 'M3915'
+    }
+  
   stages {
     stage('Build') {
       steps {
@@ -38,7 +42,4 @@ pipeline {
       }
     }
   }
-  tools {
-        maven 'M3915'
-    }
 }
