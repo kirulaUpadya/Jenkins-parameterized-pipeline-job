@@ -1,5 +1,10 @@
 pipeline {
   agent any
+
+  tools {
+        maven "M3915"
+    }
+  
   stages {
     stage('Maven Version') {
       steps {
@@ -35,7 +40,5 @@ pipeline {
         sh 'curl -s http://localhost:${params.APP_PORT}/hello'
       }
     }
-
-
   }
 }
